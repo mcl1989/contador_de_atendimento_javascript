@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>Contador de atendimento javascript</title>
+		<style>
+			#contadorAtendimento{
+				position:fixed;
+				top:20px;
+				right:20px;
+				color:#0a0a0a;
+				border:1px solid #000;
+				background-color:#CECECE;
+				padding:3px 5px;
+				border-radius:10px;
+				width:200px;
+				text-align:center;
+				z-index:9999;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="contadorAtendimento" style="">
+			<span style="font-size:11px;font-weight:bold;">Tempo de Atendimento: </span>
+			<label id="lblHour">00</label>:<label id="lblMinute">00</label>:<label id="lblSecond">00</label>
+		</div>
+
+		<script>
+
+			function contaTempoAtendimento(){
+				if(secondsLabel.innerHTML < 59){
+					segundos = secondsLabel.innerHTML;
+					segundos++;
+					if(segundos <= 9){
+						secondsLabel.innerHTML = "0" + segundos;
+					}else{
+						secondsLabel.innerHTML = segundos;
+					}
+				}else if(minutesLabel.innerHTML < 59){
+					minutos = minutesLabel.innerHTML;
+					minutos++;
+					if(minutos <= 9){
+						minutesLabel.innerHTML = "0" + minutos;
+					}else{
+						minutesLabel.innerHTML = minutos;
+					}
+					secondsLabel.innerHTML = '00';
+				}else{
+					horas = hoursLabel.innerHTML;
+					horas++;
+					if(horas <= 9){
+						hoursLabel.innerHTML = "0" + horas;
+					}else{
+						hoursLabel.innerHTML = horas;
+					}
+					minutesLabel.innerHTML = '00';
+					secondsLabel.innerHTML = '00';
+				}
+			}
+
+			hoursLabel = document.getElementById("lblHour");
+			minutesLabel = document.getElementById("lblMinute");
+			secondsLabel = document.getElementById("lblSecond");
+			setInterval(contaTempoAtendimento, 1000);
+
+		</script>
+
+	</body>
+</html>
